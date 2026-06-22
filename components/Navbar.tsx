@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/context/ThemeContext";
-import { NAV_LINKS, WHATSAPP_URL } from "@/lib/constants";
+import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -14,15 +14,19 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00A3FF]/10 ring-1 ring-[#00A3FF]/30 transition-all group-hover:bg-[#00A3FF]/20">
-            <span className="text-lg font-bold text-[#00A3FF]">Z</span>
-          </div>
-          <span className="text-xl font-bold tracking-tight">
-            Zep<span className="text-[#00A3FF]">lion</span>
-          </span>
+    <header className="sticky top-0 z-40 w-full border-b border-white/[0.06] bg-[#060D1A]/85 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <img
+            src="/logo.png"
+            alt="Zeplion Logo"
+            style={{
+              height: "48px",
+              width: "auto",
+              objectFit: "contain",
+              display: "block",
+            }}
+          />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -30,7 +34,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#00A3FF]"
+              className="text-sm font-medium text-white/60 transition-colors hover:text-[#00A3FF]"
             >
               {link.label}
             </a>
@@ -43,7 +47,7 @@ export function Navbar() {
             size="icon"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="rounded-full"
+            className="rounded-full text-white/70 hover:bg-white/10 hover:text-white"
           >
             {theme === "dark" ? (
               <Sun className="h-4 w-4" />
@@ -57,14 +61,14 @@ export function Navbar() {
             className="hidden bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90 sm:inline-flex"
           >
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Get Free Demo
+              {SITE.ctaLabel}
             </a>
           </Button>
 
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="text-white/70 hover:bg-white/10 hover:text-white md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -79,7 +83,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-white/[0.06] bg-[#060D1A]/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {NAV_LINKS.map((link) => (
@@ -88,8 +92,8 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground",
-                    "transition-colors hover:bg-muted hover:text-foreground"
+                    "rounded-lg px-3 py-2.5 text-sm font-medium text-white/60",
+                    "transition-colors hover:bg-white/5 hover:text-white"
                   )}
                 >
                   {link.label}
@@ -105,7 +109,7 @@ export function Navbar() {
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Get Free Demo
+                  {SITE.ctaLabel}
                 </a>
               </Button>
             </div>

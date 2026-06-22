@@ -1,11 +1,18 @@
 export const SITE = {
   name: "Zeplion",
-  tagline: "We Build AI Systems That Work While You Sleep",
+  tagline: "The All-In-One Technology Partner For Businesses Worldwide",
+  subheadline:
+    "From AI automation to SaaS development and custom software — we build the systems that power your business growth",
+  description:
+    "Zeplion is a full-service technology company helping businesses worldwide automate, scale and grow using AI systems and custom software solutions",
+  footerDescription:
+    "Your all-in-one technology partner for AI automation, SaaS and software development",
   email: "mzohaibsameer@gmail.com",
   website: "zeplion.com",
   whatsapp: "447479348006",
   whatsappMessage:
-    "Hi Zeplion, I'd like to get a free demo of your AI automation services.",
+    "Hi Zeplion, I'd like to start my project with you.",
+  ctaLabel: "Start Your Project",
 } as const;
 
 export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
@@ -16,44 +23,50 @@ export const SERVICES = [
     description:
       "End-to-end automation with VAPI and n8n — connect your tools, eliminate manual work, and scale operations effortlessly.",
     icon: "Bot",
-  },
-  {
-    title: "Software Development",
-    description:
-      "Custom software built for performance, security, and growth — from MVPs to enterprise-grade platforms.",
-    icon: "Code2",
+    tier: "primary" as const,
   },
   {
     title: "SaaS Development",
     description:
       "Full-stack SaaS products with billing, auth, dashboards, and cloud infrastructure ready to launch.",
     icon: "Cloud",
+    tier: "primary" as const,
+  },
+  {
+    title: "Software Development",
+    description:
+      "Custom software built for performance, security, and growth — from MVPs to enterprise-grade platforms.",
+    icon: "Code2",
+    tier: "primary" as const,
   },
   {
     title: "AI Voice Agents",
     description:
       "Intelligent voice agents that handle calls 24/7 — booking, support, sales, and lead qualification on autopilot.",
     icon: "Mic",
+    tier: "secondary" as const,
   },
   {
     title: "Workflow Automation",
     description:
       "Streamline repetitive processes across your business with smart triggers, integrations, and real-time monitoring.",
     icon: "Workflow",
+    tier: "secondary" as const,
   },
   {
     title: "Digital Marketing",
     description:
       "Data-driven campaigns that attract, convert, and retain customers — powered by AI insights and automation.",
     icon: "TrendingUp",
+    tier: "secondary" as const,
   },
 ] as const;
 
 export const STATS = [
-  { value: "5★", label: "Client Rating" },
-  { value: "3+", label: "Projects Done" },
-  { value: "3", label: "Countries Served" },
-  { value: "24/7", label: "AI Systems" },
+  { value: "$441+", label: "Total Earned" },
+  { value: "5★", label: "Rated" },
+  { value: "3", label: "Countries" },
+  { value: "24/7", label: "Support" },
 ] as const;
 
 export const PROCESS_STEPS = [
@@ -99,11 +112,9 @@ export const REVIEWS = [
 ] as const;
 
 export const TRUST_BADGES = [
-  "VAPI Certified",
-  "n8n Expert",
-  "AI-First Agency",
-  "24/7 Support",
-  "Global Delivery",
+  "Trusted by businesses in 3 countries",
+  "5-star rated on Fiverr & Upwork",
+  "Projects delivered in UK & Dubai",
 ] as const;
 
 export const NAV_LINKS = [

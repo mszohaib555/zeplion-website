@@ -12,9 +12,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <UrgencyBanner />
-      <div className="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <Navbar />
-      </div>
+      <Navbar />
       <main className="flex-1">
         <Hero />
         <Stats />

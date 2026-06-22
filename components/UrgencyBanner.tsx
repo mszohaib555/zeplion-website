@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
-
 export function UrgencyBanner() {
   return (
     <motion.div
@@ -16,11 +14,10 @@ export function UrgencyBanner() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00A3FF] opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00A3FF]" />
         </span>
-        <Zap className="h-3.5 w-3.5 text-[#00A3FF]" />
         <span>
-          Limited Slots —{" "}
+          🚀 Now serving clients in UK, USA and Middle East —{" "}
           <span className="font-semibold text-[#00A3FF]">
-            Only 3 spots left this month
+            Limited project slots available
           </span>
         </span>
       </div>

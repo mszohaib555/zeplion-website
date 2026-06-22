@@ -20,14 +20,15 @@ function AnimatedStat({
   useEffect(() => {
     if (!isInView) return;
 
-    const numericMatch = value.match(/^(\d+)/);
+    const numericMatch = value.match(/^\$?(\d+)/);
     if (!numericMatch) {
       setDisplayValue(value);
       return;
     }
 
+    const prefix = value.startsWith("$") ? "$" : "";
     const target = parseInt(numericMatch[1], 10);
-    const suffix = value.slice(numericMatch[1].length);
+    const suffix = value.slice(prefix.length + numericMatch[1].length);
     const duration = 1500;
     const startTime = performance.now();
 
@@ -36,7 +37,7 @@ function AnimatedStat({
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
-      setDisplayValue(`${current}${suffix}`);
+      setDisplayValue(`${prefix}${current}${suffix}`);
 
       if (progress < 1) {
         requestAnimationFrame(animate);

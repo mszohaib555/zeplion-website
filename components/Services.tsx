@@ -11,7 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SERVICES, WHATSAPP_URL } from "@/lib/constants";
+import { SERVICES, SITE, WHATSAPP_URL } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -32,16 +32,11 @@ export function Services() {
           viewport={{ once: true }}
           className="mb-14 text-center"
         >
-          <span className="mb-4 inline-block rounded-full border border-[#00A3FF]/30 bg-[#00A3FF]/10 px-4 py-1 text-sm font-medium text-[#00A3FF]">
-            Our Services
-          </span>
           <h2 className="text-3xl font-bold sm:text-4xl">
-            Everything You Need to{" "}
-            <span className="text-[#00A3FF]">Automate & Scale</span>
+            Our <span className="text-[#00A3FF]">Services</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            From AI voice agents to full SaaS platforms — we build systems that
-            work around the clock so your business never stops.
+            {SITE.description}
           </p>
         </motion.div>
 
@@ -84,7 +79,7 @@ export function Services() {
             className="bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90"
           >
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Get Free Demo
+              {SITE.ctaLabel}
             </a>
           </Button>
         </motion.div>

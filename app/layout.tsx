@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Zeplion | AI Automation & Software Development",
+  title: "Zeplion | The All-In-One Technology Partner",
   description:
-    "We Build AI Systems That Work While You Sleep. AI automation, voice agents, SaaS development, and workflow automation by Zeplion.",
+    "The All-In-One Technology Partner For Businesses Worldwide. AI automation, SaaS development, custom software, and voice agents by Zeplion.",
   keywords: [
     "AI automation",
     "voice agents",
@@ -21,11 +21,12 @@ export const metadata: Metadata = {
     "SaaS development",
     "workflow automation",
     "Zeplion",
+    "technology partner",
   ],
   openGraph: {
-    title: "Zeplion | AI Automation & Software Development",
+    title: "Zeplion | The All-In-One Technology Partner",
     description:
-      "We Build AI Systems That Work While You Sleep. Get your free demo today.",
+      "From AI automation to SaaS development and custom software — we build the systems that power your business growth.",
     url: "https://zeplion.com",
     siteName: "Zeplion",
     type: "website",

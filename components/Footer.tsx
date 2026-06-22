@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
@@ -17,17 +18,17 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00A3FF]/10 ring-1 ring-[#00A3FF]/30">
-                <span className="text-lg font-bold text-[#00A3FF]">Z</span>
-              </div>
-              <span className="text-xl font-bold tracking-tight">
-                Zep<span className="text-[#00A3FF]">lion</span>
-              </span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/logo.jpg"
+                alt="Zeplion"
+                width={140}
+                height={40}
+                className="h-9 w-auto object-contain"
+              />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              {SITE.tagline}. AI automation, voice agents, and custom software
-              for businesses worldwide.
+              {SITE.footerDescription}
             </p>
           </div>
 

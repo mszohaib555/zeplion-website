@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { WHATSAPP_URL } from "@/lib/constants";
+import { SITE, WHATSAPP_URL } from "@/lib/constants";
 
 export function CTA() {
   return (
@@ -31,8 +31,8 @@ export function CTA() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Only 3 spots left this month. Book your free demo and see how
-              Zeplion can build AI systems that work while you sleep.
+              Limited project slots available. Partner with Zeplion to build AI
+              systems and custom software that power your business growth.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -57,7 +57,7 @@ export function CTA() {
                 className="h-12 w-full border-[#00A3FF]/30 px-8 text-base hover:bg-[#00A3FF]/10 sm:w-auto"
               >
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  Get Free Demo
+                  {SITE.ctaLabel}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
