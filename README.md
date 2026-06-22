@@ -1,2 +1,2 @@
 # zeplion-website
-Zeplion AI Company Website
+Zeplion Tech Company Website
