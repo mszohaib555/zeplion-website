@@ -7,66 +7,146 @@ export const SITE = {
     "Zeplion is a full-service technology company helping businesses worldwide automate, scale and grow using AI systems and custom software solutions",
   footerDescription:
     "Your all-in-one technology partner for AI automation, SaaS and software development",
+  honestTagline: "Currently working with select clients worldwide",
   email: "mzohaibsameer@gmail.com",
   website: "zeplion.com",
   whatsapp: "447479348006",
-  whatsappMessage:
-    "Hi Zeplion, I'd like to start my project with you.",
+  whatsappMessage: "Hi Zeplion, I'd like to start my project with you.",
   ctaLabel: "Start Your Project",
 } as const;
 
 export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
 
+export const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/#process" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
 export const SERVICES = [
   {
     title: "AI Automation",
-    description:
-      "End-to-end automation with VAPI and n8n — connect your tools, eliminate manual work, and scale operations effortlessly.",
+    subtitle: "VAPI + n8n",
+    shortDescription:
+      "Automate workflows and integrations using VAPI voice AI and n8n — connect your tools and eliminate manual work.",
+    longDescription:
+      "We build end-to-end AI automation systems using VAPI and n8n. From voice-powered workflows to multi-app integrations, we connect your existing tools, trigger actions automatically, and scale operations without adding headcount.",
     icon: "Bot",
-    tier: "primary" as const,
-  },
-  {
-    title: "SaaS Development",
-    description:
-      "Full-stack SaaS products with billing, auth, dashboards, and cloud infrastructure ready to launch.",
-    icon: "Cloud",
-    tier: "primary" as const,
+    features: [
+      "VAPI voice workflow integration",
+      "n8n automation pipelines",
+      "CRM & tool integrations",
+      "24/7 automated operations",
+    ],
   },
   {
     title: "Software Development",
-    description:
-      "Custom software built for performance, security, and growth — from MVPs to enterprise-grade platforms.",
+    subtitle: "Custom Build",
+    shortDescription:
+      "Custom software and web applications built for performance, security, and long-term business growth.",
+    longDescription:
+      "From MVPs to production-ready platforms, we develop custom software tailored to your business. Clean architecture, modern tech stacks, and scalable code that grows with you.",
     icon: "Code2",
-    tier: "primary" as const,
+    features: [
+      "Web & mobile applications",
+      "API development",
+      "Database design",
+      "Performance optimization",
+    ],
+  },
+  {
+    title: "SaaS Development",
+    subtitle: "Full Stack",
+    shortDescription:
+      "Full-stack SaaS products with authentication, billing, dashboards, and cloud infrastructure ready to launch.",
+    longDescription:
+      "We build complete SaaS products from the ground up — user auth, subscription billing, admin dashboards, and cloud deployment. White-label ready and built to scale.",
+    icon: "Cloud",
+    features: [
+      "Multi-tenant architecture",
+      "Stripe billing integration",
+      "Admin dashboards",
+      "Cloud deployment",
+    ],
   },
   {
     title: "AI Voice Agents",
-    description:
-      "Intelligent voice agents that handle calls 24/7 — booking, support, sales, and lead qualification on autopilot.",
+    subtitle: "24/7 Calls",
+    shortDescription:
+      "Intelligent voice agents that handle calls around the clock — bookings, support, sales, and lead qualification.",
+    longDescription:
+      "Deploy AI voice agents powered by VAPI that answer calls 24/7. Perfect for reception, appointment booking, customer support, and sales qualification — with natural conversations and real results.",
     icon: "Mic",
-    tier: "secondary" as const,
+    features: [
+      "Inbound & outbound calls",
+      "Appointment booking",
+      "Lead qualification",
+      "Custom voice personas",
+    ],
   },
   {
     title: "Workflow Automation",
-    description:
-      "Streamline repetitive processes across your business with smart triggers, integrations, and real-time monitoring.",
+    subtitle: "Smart Triggers",
+    shortDescription:
+      "Streamline repetitive business processes with smart triggers, integrations, and real-time monitoring.",
+    longDescription:
+      "We map your business processes and automate them end-to-end. Smart triggers, conditional logic, and integrations across your entire tool stack — so nothing falls through the cracks.",
     icon: "Workflow",
-    tier: "secondary" as const,
+    features: [
+      "Process mapping",
+      "Multi-step automations",
+      "Error handling & alerts",
+      "Real-time monitoring",
+    ],
   },
   {
     title: "Digital Marketing",
-    description:
-      "Data-driven campaigns that attract, convert, and retain customers — powered by AI insights and automation.",
+    subtitle: "AI-Powered",
+    shortDescription:
+      "Data-driven marketing campaigns that attract, convert, and retain customers using AI insights.",
+    longDescription:
+      "Combine automation with data-driven marketing. We help you reach the right audience, optimize campaigns with AI insights, and build systems that convert leads into loyal customers.",
     icon: "TrendingUp",
-    tier: "secondary" as const,
+    features: [
+      "Campaign automation",
+      "Lead nurturing flows",
+      "Analytics & reporting",
+      "Content strategy",
+    ],
   },
 ] as const;
 
 export const STATS = [
-  { value: "$441+", label: "Total Earned" },
-  { value: "5★", label: "Rated" },
+  { value: "2", label: "Active Projects" },
+  { value: "5★", label: "Rated on Fiverr" },
   { value: "3", label: "Countries" },
   { value: "24/7", label: "Support" },
+] as const;
+
+export const PROJECTS = [
+  {
+    title: "Employee Timesheet SaaS",
+    status: "In Development",
+    statusIcon: "🔄",
+    description:
+      "White-label timesheet management SaaS platform built for businesses",
+  },
+  {
+    title: "AI Code Security Auditor",
+    status: "In Development",
+    statusIcon: "🔄",
+    description:
+      "AI-powered security auditing tool that scans code for vulnerabilities",
+  },
+  {
+    title: "AI Voice Receptionist",
+    status: "Delivered",
+    statusIcon: "✅",
+    description:
+      "24/7 AI receptionist for Dubai dental clinic using VAPI",
+  },
 ] as const;
 
 export const PROCESS_STEPS = [
@@ -101,7 +181,7 @@ export const REVIEWS = [
     username: "khanhaseeb262",
     location: "UK 🇬🇧",
     rating: 5,
-    text: "The AI voice agent transformed our operations. Handles all calls 24/7 automatically. Game changing!",
+    text: "The AI voice agent transformed our operations. Handles all calls 24/7 automatically.",
   },
   {
     username: "gm_sameer",
@@ -113,13 +193,21 @@ export const REVIEWS = [
 
 export const TRUST_BADGES = [
   "Trusted by businesses in 3 countries",
-  "5-star rated on Fiverr & Upwork",
+  "5-star rated on Fiverr",
   "Projects delivered in UK & Dubai",
 ] as const;
 
-export const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+export const PROJECT_TYPES = [
+  "AI Automation",
+  "Software Development",
+  "SaaS Development",
+  "Other",
 ] as const;
+
+export const BUDGET_RANGES = [
+  "$500 - $1,000",
+  "$1,000 - $5,000",
+  "$5,000+",
+] as const;
+
+export const TIMELINES = ["ASAP", "1-2 months", "3-6 months"] as const;

@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { REVIEWS, SITE, TRUST_BADGES, WHATSAPP_URL } from "@/lib/constants";
+import { Logo } from "@/components/Logo";
+import { REVIEWS, SITE, TRUST_BADGES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const floatingCards = [
@@ -69,20 +70,16 @@ export function Hero() {
               {SITE.subheadline}
             </p>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground/80 lg:mx-0">
-              {SITE.description}
-            </p>
-
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
               <Button
                 asChild
                 size="lg"
                 className="h-12 w-full bg-[#00A3FF] px-8 text-base text-white hover:bg-[#00A3FF]/90 sm:w-auto"
               >
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Link href="/contact">
                   {SITE.ctaLabel}
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
               <Button
                 asChild
@@ -90,35 +87,22 @@ export function Hero() {
                 size="lg"
                 className="h-12 w-full border-[#00A3FF]/30 px-8 text-base hover:bg-[#00A3FF]/10 sm:w-auto"
               >
-                <a href="#services">Explore Services</a>
+                <Link href="/services">Explore Services</Link>
               </Button>
             </div>
 
-            <div className="mt-10 flex items-center justify-center gap-6 lg:justify-start">
-              <div className="flex -space-x-2">
-                {["K", "G", "Z"].map((initial, i) => (
-                  <div
-                    key={initial}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-[#00A3FF]/20 text-xs font-bold text-[#00A3FF]"
-                    style={{ zIndex: 3 - i }}
-                  >
-                    {initial}
-                  </div>
+            <div className="mt-10 flex items-center justify-center gap-3 lg:justify-start">
+              <div className="flex items-center gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-4 w-4 fill-[#00A3FF] text-[#00A3FF]"
+                  />
                 ))}
               </div>
-              <div className="text-left">
-                <div className="flex items-center gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-[#00A3FF] text-[#00A3FF]"
-                    />
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Join businesses already automating with Zeplion
-                </p>
-              </div>
+              <p className="text-sm text-muted-foreground">
+                {SITE.honestTagline}
+              </p>
             </div>
           </motion.div>
 
@@ -131,14 +115,7 @@ export function Hero() {
             >
               <div className="relative flex items-center justify-center">
                 <div className="absolute h-48 w-48 rounded-full bg-[#00A3FF]/10 blur-3xl lg:h-64 lg:w-64" />
-                <Image
-                  src="/logo.png"
-                  alt="Zeplion"
-                  width={280}
-                  height={80}
-                  className="relative h-16 w-auto object-contain sm:h-20 lg:h-24"
-                  priority
-                />
+                <Logo />
               </div>
               <p className="mt-6 text-center text-sm font-medium text-muted-foreground">
                 AI systems running 24/7

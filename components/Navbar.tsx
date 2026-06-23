@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/Logo";
 import { useTheme } from "@/context/ThemeContext";
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -12,30 +14,32 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return pathname === "/";
+    return pathname === href;
+  };
 
   return (
     <nav className="relative sticky top-10 z-50 flex h-16 w-full items-center justify-between border-b border-white/5 bg-[#060D1A]/90 px-8 backdrop-blur-md">
       <Link href="/" className="flex shrink-0 items-center">
-        <img
-          src="/logo.png"
-          alt="Zeplion"
-          style={{
-            height: "45px",
-            width: "auto",
-            objectFit: "contain",
-          }}
-        />
+        <Logo />
       </Link>
 
       <div className="hidden items-center gap-8 md:flex">
         {NAV_LINKS.map((link) => (
-          <a
+          <Link
             key={link.href}
             href={link.href}
-            className="text-sm font-medium text-white/60 transition-colors hover:text-[#00A3FF]"
+            className={cn(
+              "text-sm font-medium transition-colors hover:text-[#00A3FF]",
+              isActive(link.href) ? "text-[#00A3FF]" : "text-white/60"
+            )}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
       </div>
 
@@ -59,9 +63,7 @@ export function Navbar() {
           size="sm"
           className="hidden h-8 bg-[#00A3FF] px-3 text-white hover:bg-[#00A3FF]/90 sm:inline-flex"
         >
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            {SITE.ctaLabel}
-          </a>
+          <Link href="/contact">{SITE.ctaLabel}</Link>
         </Button>
 
         <Button
@@ -85,31 +87,26 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-1 px-8 py-3">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium text-white/60",
-                    "transition-colors hover:bg-white/5 hover:text-white"
+                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-white/5 hover:text-white",
+                    isActive(link.href) ? "text-[#00A3FF]" : "text-white/60"
                   )}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <Button
                 asChild
                 size="sm"
                 className="mt-1 h-8 bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90"
               >
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                >
+                <Link href="/contact" onClick={() => setMobileOpen(false)}>
                   {SITE.ctaLabel}
-                </a>
+                </Link>
               </Button>
             </div>
           </motion.div>

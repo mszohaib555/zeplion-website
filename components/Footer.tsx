@@ -1,16 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
-
-const footerLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
-];
 
 export function Footer() {
   return (
@@ -19,16 +12,13 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <Link href="/" className="inline-flex items-center">
-              <Image
-                src="/logo.jpg"
-                alt="Zeplion"
-                width={140}
-                height={40}
-                className="h-9 w-auto object-contain"
-              />
+              <Logo />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {SITE.footerDescription}
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground/80">
+              {SITE.honestTagline}
             </p>
           </div>
 
@@ -37,14 +27,14 @@ export function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {footerLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-[#00A3FF]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -91,15 +81,15 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-xs text-muted-foreground transition-colors hover:text-[#00A3FF]"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

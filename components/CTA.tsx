@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { SITE, WHATSAPP_URL } from "@/lib/constants";
 
 export function CTA() {
   return (
-    <section id="contact" className="px-4 py-20 sm:px-6 lg:px-8">
+    <section className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,8 +32,8 @@ export function CTA() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Limited project slots available. Partner with Zeplion to build AI
-              systems and custom software that power your business growth.
+              {SITE.honestTagline}. Tell us about your project and we&apos;ll
+              get back to you within 24 hours.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -56,10 +57,10 @@ export function CTA() {
                 size="lg"
                 className="h-12 w-full border-[#00A3FF]/30 px-8 text-base hover:bg-[#00A3FF]/10 sm:w-auto"
               >
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Link href="/contact">
                   {SITE.ctaLabel}
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

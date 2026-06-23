@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Bot,
@@ -10,8 +11,9 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SERVICES, SITE, WHATSAPP_URL } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -22,9 +24,15 @@ const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
 };
 
-export function Services() {
+interface ServicesProps {
+  preview?: boolean;
+}
+
+export function Services({ preview = false }: ServicesProps) {
+  const items = preview ? SERVICES : SERVICES;
+
   return (
-    <section id="services" className="px-4 py-20 sm:px-6 lg:px-8">
+    <section id={preview ? "services" : undefined} className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,12 +44,13 @@ export function Services() {
             Our <span className="text-[#00A3FF]">Services</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            {SITE.description}
+            Six core capabilities — all equally important to how we help
+            businesses automate, build, and grow.
           </p>
         </motion.div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, index) => {
+          {items.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
               <motion.div
@@ -56,33 +65,52 @@ export function Services() {
                 <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#00A3FF]/10 ring-1 ring-[#00A3FF]/20 transition-all group-hover:bg-[#00A3FF]/20">
                   <Icon className="h-6 w-6 text-[#00A3FF]" />
                 </div>
-                <h3 className="relative mb-2 text-lg font-semibold">
+                <h3 className="relative mb-1 text-lg font-semibold">
                   {service.title}
                 </h3>
-                <p className="relative text-sm leading-relaxed text-muted-foreground">
-                  {service.description}
+                <p className="relative mb-2 text-xs font-medium text-[#00A3FF]">
+                  {service.subtitle}
                 </p>
+                <p className="relative text-sm leading-relaxed text-muted-foreground">
+                  {preview ? service.shortDescription : service.longDescription}
+                </p>
+                {!preview && service.features && (
+                  <ul className="relative mt-4 space-y-2">
+                    {service.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-[#00A3FF]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90"
+        {preview && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 text-center"
           >
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              {SITE.ctaLabel}
-            </a>
-          </Button>
-        </motion.div>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90"
+            >
+              <Link href="/services">
+                View All Services
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
