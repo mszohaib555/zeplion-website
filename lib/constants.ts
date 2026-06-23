@@ -11,8 +11,10 @@ export const SITE = {
   email: "contact@zeplion.com",
   website: "zeplion.com",
   whatsapp: "447479348006",
-  whatsappMessage: "Hi Zeplion, I'd like to start my project with you.",
-  ctaLabel: "Start Your Project",
+  whatsappMessage: "Hi Zeplion, I'd like to get a free AI audit.",
+  ctaPrimary: "Get a Free AI Audit",
+  ctaSecondary: "Book a Discovery Call",
+  ctaLabel: "Get a Free AI Audit",
 } as const;
 
 export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;

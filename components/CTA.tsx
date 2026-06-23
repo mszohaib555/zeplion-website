@@ -32,11 +32,21 @@ export function CTA() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              {SITE.honestTagline}. Tell us about your project and we&apos;ll
-              get back to you within 24 hours.
+              {SITE.honestTagline}. Get a free AI audit and see where automation
+              can save you time and money.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 w-full bg-[#00A3FF] px-8 text-base text-white hover:bg-[#00A3FF]/90 sm:w-auto"
+              >
+                <Link href="/contact" data-track="cta-contact">
+                  {SITE.ctaPrimary}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
               <Button
                 asChild
                 size="lg"
@@ -46,21 +56,11 @@ export function CTA() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-track="whatsapp-cta"
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Chat on WhatsApp
                 </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-12 w-full border-[#00A3FF]/30 px-8 text-base hover:bg-[#00A3FF]/10 sm:w-auto"
-              >
-                <Link href="/contact">
-                  {SITE.ctaLabel}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
               </Button>
             </div>
           </div>

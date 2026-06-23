@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Analytics } from "@/components/Analytics";
+import { buildMetadata, getJsonLdGraph } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,29 +12,12 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Zeplion | The All-In-One Technology Partner",
+export const metadata: Metadata = buildMetadata({
+  title: "Zeplion | AI Automation & Software Development",
   description:
-    "The All-In-One Technology Partner For Businesses Worldwide. AI automation, SaaS development, custom software, and voice agents by Zeplion.",
-  keywords: [
-    "AI automation",
-    "voice agents",
-    "VAPI",
-    "n8n",
-    "SaaS development",
-    "workflow automation",
-    "Zeplion",
-    "technology partner",
-  ],
-  openGraph: {
-    title: "Zeplion | The All-In-One Technology Partner",
-    description:
-      "From AI automation to SaaS development and custom software — we build the systems that power your business growth.",
-    url: "https://zeplion.com",
-    siteName: "Zeplion",
-    type: "website",
-  },
-};
+    "AI automation and software development company. VAPI voice agents, n8n workflows, SaaS development, and custom software for businesses worldwide.",
+  path: "/",
+});
 
 export default function RootLayout({
   children,
@@ -39,8 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} dark h-full scroll-smooth antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col font-sans">
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getJsonLdGraph()),
+          }}
+        />
+        <Analytics />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

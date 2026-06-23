@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PROJECTS } from "@/lib/constants";
+import { PROJECTS, SITE } from "@/lib/constants";
 
 export function Portfolio() {
   return (
@@ -65,8 +65,8 @@ export function Portfolio() {
             variant="outline"
             className="border-[#00A3FF]/30 hover:bg-[#00A3FF]/10"
           >
-            <Link href="/contact">
-              Start Your Project
+            <Link href="/contact" data-track="cta-portfolio">
+              {SITE.ctaPrimary}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

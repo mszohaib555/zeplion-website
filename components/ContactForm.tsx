@@ -189,6 +189,7 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
+        data-track="cta-contact"
         className="w-full bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90 sm:w-auto"
       >
         <Send className="mr-2 h-4 w-4" />

@@ -2,17 +2,28 @@
 
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
-import { Logo } from "@/components/Logo";
+import { TrustpilotBadge } from "@/components/TrustpilotBadge";
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card/30">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="inline-flex items-center">
-              <Logo />
+            <Link href="/" className="inline-block shrink-0">
+              <img
+                src="/logo.png"
+                alt="Zeplion"
+                loading="lazy"
+                style={{
+                  height: "40px",
+                  width: "auto",
+                  objectFit: "contain",
+                  display: "block",
+                  maxWidth: "160px",
+                }}
+              />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {SITE.footerDescription}
@@ -37,6 +48,14 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-sm text-muted-foreground transition-colors hover:text-[#00A3FF]"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -59,6 +78,7 @@ export function Footer() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-track="whatsapp-footer"
                   className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-[#00A3FF]"
                 >
                   <MessageCircle className="h-4 w-4" />
@@ -75,6 +95,8 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          <TrustpilotBadge />
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
