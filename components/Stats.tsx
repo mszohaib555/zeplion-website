@@ -8,44 +8,49 @@ function AnimatedStat({
   value,
   label,
   index,
+  animate = false,
 }: {
   value: string;
   label: string;
   index: number;
+  animate?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [displayValue, setDisplayValue] = useState("0");
+  const [displayValue, setDisplayValue] = useState(value);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || !animate) {
+      setDisplayValue(value);
+      return;
+    }
 
-    const numericMatch = value.match(/^\$?(\d+)/);
+    const numericMatch = value.match(/^(\d+)(\+)?$/);
     if (!numericMatch) {
       setDisplayValue(value);
       return;
     }
 
-    const prefix = value.startsWith("$") ? "$" : "";
     const target = parseInt(numericMatch[1], 10);
-    const suffix = value.slice(prefix.length + numericMatch[1].length);
+    const suffix = numericMatch[2] ?? "";
     const duration = 1500;
     const startTime = performance.now();
 
-    const animate = (currentTime: number) => {
+    const run = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
-      setDisplayValue(`${prefix}${current}${suffix}`);
+      setDisplayValue(`${current}${suffix}`);
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        requestAnimationFrame(run);
       }
     };
 
-    requestAnimationFrame(animate);
-  }, [isInView, value]);
+    setDisplayValue(`0${suffix}`);
+    requestAnimationFrame(run);
+  }, [isInView, value, animate]);
 
   return (
     <motion.div
@@ -56,7 +61,11 @@ function AnimatedStat({
       className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 p-6 text-center backdrop-blur-sm transition-all hover:border-[#00A3FF]/40 hover:bg-[#00A3FF]/5"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#00A3FF]/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-      <p className="relative text-3xl font-bold text-[#00A3FF] sm:text-4xl">
+      <p
+        className={`relative font-bold text-[#00A3FF] ${
+          value.length > 8 ? "text-xl sm:text-2xl" : "text-3xl sm:text-4xl"
+        }`}
+      >
         {displayValue}
       </p>
       <p className="relative mt-2 text-sm font-medium text-muted-foreground">
@@ -92,6 +101,7 @@ export function Stats() {
               value={stat.value}
               label={stat.label}
               index={index}
+              animate={stat.animate}
             />
           ))}
         </div>

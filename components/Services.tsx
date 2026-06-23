@@ -9,11 +9,11 @@ import {
   Mic,
   TrendingUp,
   Workflow,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SERVICES } from "@/lib/constants";
+import { SERVICES, SERVICES_SUBTITLE } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
   Bot,
@@ -26,31 +26,31 @@ const iconMap: Record<string, LucideIcon> = {
 
 interface ServicesProps {
   preview?: boolean;
+  showHeader?: boolean;
 }
 
-export function Services({ preview = false }: ServicesProps) {
-  const items = preview ? SERVICES : SERVICES;
-
+export function Services({ preview = false, showHeader = true }: ServicesProps) {
   return (
     <section id={preview ? "services" : undefined} className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14 text-center"
-        >
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            Our <span className="text-[#00A3FF]">Services</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Six core capabilities — all equally important to how we help
-            businesses automate, build, and grow.
-          </p>
-        </motion.div>
+        {showHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-14 text-center"
+          >
+            <h2 className="text-3xl font-bold sm:text-4xl">
+              Our <span className="text-[#00A3FF]">Services</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              {SERVICES_SUBTITLE}
+            </p>
+          </motion.div>
+        )}
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((service, index) => {
+          {SERVICES.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
               <motion.div
@@ -74,7 +74,7 @@ export function Services({ preview = false }: ServicesProps) {
                 <p className="relative text-sm leading-relaxed text-muted-foreground">
                   {preview ? service.shortDescription : service.longDescription}
                 </p>
-                {!preview && service.features && (
+                {!preview && (
                   <ul className="relative mt-4 space-y-2">
                     {service.features.map((feature) => (
                       <li

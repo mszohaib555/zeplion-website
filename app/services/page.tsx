@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteLayout } from "@/components/SiteLayout";
-import { PageHeader } from "@/components/PageHeader";
 import { Services } from "@/components/Services";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
@@ -15,11 +14,6 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <SiteLayout>
-      <PageHeader
-        title="Our"
-        highlight="Services"
-        description="Six core capabilities — from AI automation to SaaS development. All equally important to how we help your business grow."
-      />
       <Services />
       <section className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[#00A3FF]/20 bg-[#00A3FF]/10 p-8 text-center">

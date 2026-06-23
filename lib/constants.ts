@@ -8,7 +8,7 @@ export const SITE = {
   footerDescription:
     "Your all-in-one technology partner for AI automation, SaaS and software development",
   honestTagline: "Currently working with select clients worldwide",
-  email: "mzohaibsameer@gmail.com",
+  email: "contact@zeplion.com",
   website: "zeplion.com",
   whatsapp: "447479348006",
   whatsappMessage: "Hi Zeplion, I'd like to start my project with you.",
@@ -118,11 +118,14 @@ export const SERVICES = [
   },
 ] as const;
 
+export const SERVICES_SUBTITLE =
+  "Intelligent solutions for businesses worldwide";
+
 export const STATS = [
-  { value: "2", label: "Active Projects" },
-  { value: "5★", label: "Rated on Fiverr" },
-  { value: "3", label: "Countries" },
-  { value: "24/7", label: "Support" },
+  { value: "15+", label: "Active Projects", animate: true },
+  { value: "5.0 ⭐", label: "Fiverr Rating", animate: false },
+  { value: "UK, USA, Dubai", label: "Global Presence", animate: false },
+  { value: "24/7", label: "Support", animate: false },
 ] as const;
 
 export const PROJECTS = [
