@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 // Replace with your Crisp website ID from https://crisp.chat
-export const CRISP_WEBSITE_ID = "YOUR-ID-HERE";
+export const CRISP_WEBSITE_ID = "fd251f46-064b-436c-82b3-d7f9da622112";
 
 export function CrispChat() {
   return (
