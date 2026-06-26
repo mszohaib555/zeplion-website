@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Script from "next/script";
 
 // Replace with real GA4 ID from analytics.google.com
-const GA_ID = "G-XXXXXXXXXX";
+const GA_ID = "G-LCJ1DR537E";
 
 // Replace with real Clarity ID from clarity.microsoft.com
 const CLARITY_ID = "XXXXXXXXXX";
