@@ -33,7 +33,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-10 z-50 w-full border-b border-white/5 bg-[#060D1A]/90 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/5 bg-[#060D1A]/90 backdrop-blur-md">
       <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-8">
         <Link href="/" className="shrink-0">
           <img
@@ -109,7 +109,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 top-[6.5rem] z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 top-16 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div

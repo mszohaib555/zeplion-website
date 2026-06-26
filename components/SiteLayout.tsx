@@ -9,9 +9,9 @@ import { PageTransition } from "@/components/PageTransition";
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <UrgencyBanner />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
+        <UrgencyBanner />
         <PageTransition>{children}</PageTransition>
       </main>
       <Footer />

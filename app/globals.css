@@ -136,3 +136,16 @@
     text-wrap: balance;
   }
 }
+
+/* Floating chat widgets — stack cleanly on mobile */
+.crisp-client,
+#fb-customer-chat {
+  z-index: 90 !important;
+}
+
+@media (max-width: 640px) {
+  .crisp-client .cc-1no03 {
+    right: 12px !important;
+    bottom: 12px !important;
+  }
+}

@@ -1,9 +1,23 @@
+"use client";
+
+import { useEffect } from "react";
 import Script from "next/script";
 
+// Replace with real GA4 ID from analytics.google.com
 const GA_ID = "G-XXXXXXXXXX";
+
+// Replace with real Clarity ID from clarity.microsoft.com
 const CLARITY_ID = "XXXXXXXXXX";
 
 export function Analytics() {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      console.log(
+        "Analytics placeholder active. Add real IDs to go live."
+      );
+    }
+  }, []);
+
   return (
     <>
       <Script

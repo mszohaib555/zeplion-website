@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Analytics } from "@/components/Analytics";
+import { CrispChat } from "@/components/CrispChat";
+import { FacebookMessenger } from "@/components/FacebookMessenger";
 import { buildMetadata, getJsonLdGraph } from "@/lib/seo";
 import "./globals.css";
 
@@ -39,7 +41,9 @@ export default function RootLayout({
           }}
         />
         <Analytics />
+        <CrispChat />
         <ThemeProvider>{children}</ThemeProvider>
+        <FacebookMessenger />
       </body>
     </html>
   );
