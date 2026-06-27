@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   BUDGET_RANGES,
   PROJECT_TYPES,
-  SITE,
   TIMELINES,
 } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -18,48 +17,70 @@ const inputClass =
 const labelClass = "mb-1.5 block text-sm font-medium text-foreground";
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    setIsSubmitting(true);
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const body = [
-      `Full Name: ${data.get("fullName")}`,
-      `Email: ${data.get("email")}`,
-      `WhatsApp: ${data.get("whatsapp")}`,
-      `Project Type: ${data.get("projectType")}`,
-      `Budget: ${data.get("budget")}`,
-      `Timeline: ${data.get("timeline")}`,
-      ``,
-      `Project Description:`,
-      `${data.get("description")}`,
-    ].join("\n");
+    const formData = {
+      name: data.get("fullName") as string,
+      email: data.get("email") as string,
+      phone: data.get("whatsapp") as string,
+      message: [
+        `Project Type: ${data.get("projectType")}`,
+        `Budget: ${data.get("budget")}`,
+        `Timeline: ${data.get("timeline")}`,
+        "",
+        "Project Description:",
+        data.get("description"),
+      ].join("\n"),
+    };
 
-    const subject = encodeURIComponent(
-      `New Project Inquiry from ${data.get("fullName")}`
-    );
-    const encodedBody = encodeURIComponent(body);
+    try {
+      const response = await fetch("https://formspree.io/f/xqevqoaw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${encodedBody}`;
-    setSubmitted(true);
+      if (response.ok) {
+        setSubmittedName(formData.name);
+        form.reset();
+      } else {
+        setError(
+          "Something went wrong. Please try again or WhatsApp us at +447479348006"
+        );
+      }
+    } catch {
+      setError(
+        "Something went wrong. Please try again or WhatsApp us at +447479348006"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  if (submitted) {
+  if (submittedName) {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="rounded-2xl border border-[#00A3FF]/30 bg-[#00A3FF]/10 p-8 text-center"
+        className="rounded-2xl border border-green-500/30 bg-green-500/10 p-8 text-center"
       >
-        <h3 className="text-xl font-semibold text-[#00A3FF]">
-          Thank you for reaching out!
+        <h3 className="text-xl font-semibold text-green-400">
+          Thank you {submittedName}! We&apos;ll get back to you within 24
+          hours.
         </h3>
-        <p className="mt-2 text-muted-foreground">
-          Your email client should open with your inquiry. We&apos;ll get back to
-          you within 24 hours.
-        </p>
       </motion.div>
     );
   }
@@ -71,6 +92,12 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       className="space-y-5 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm sm:p-8"
     >
+      {error && (
+        <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400">
+          {error}
+        </div>
+      )}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="fullName" className={labelClass}>
@@ -189,11 +216,12 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
+        disabled={isSubmitting}
         data-track="cta-contact"
         className="w-full bg-[#00A3FF] text-white hover:bg-[#00A3FF]/90 sm:w-auto"
       >
         <Send className="mr-2 h-4 w-4" />
-        Send Inquiry
+        {isSubmitting ? "Sending..." : "Send Inquiry"}
       </Button>
     </motion.form>
   );
