@@ -22,6 +22,7 @@ export const WHATSAPP_URL = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComp
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
   { label: "Process", href: "/#process" },
   { label: "Reviews", href: "/#reviews" },
   { label: "Contact", href: "/contact" },
