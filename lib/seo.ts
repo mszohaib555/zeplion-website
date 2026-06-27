@@ -8,6 +8,7 @@ type PageMeta = {
   description: string;
   path: string;
   ogType?: "website" | "article";
+  keywords?: readonly string[];
 };
 
 export function buildMetadata({
@@ -15,6 +16,7 @@ export function buildMetadata({
   description,
   path,
   ogType = "website",
+  keywords,
 }: PageMeta): Metadata {
   const url = `${SITE_URL}${path}`;
   const fullTitle = path === "/" ? title : `${title} | ${SITE.name}`;
@@ -22,6 +24,7 @@ export function buildMetadata({
   return {
     title: fullTitle,
     description,
+    keywords: keywords ? [...keywords] : undefined,
     alternates: { canonical: url },
     openGraph: {
       title: fullTitle,
