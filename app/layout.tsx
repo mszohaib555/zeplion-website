@@ -5,8 +5,11 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { Analytics } from "@/components/Analytics";
 import { CrispChat } from "@/components/CrispChat";
 import { FacebookMessenger } from "@/components/FacebookMessenger";
+import MicrosoftClarity from "@/components/MicrosoftClarity"; // 👈 ADD THIS
 import { buildMetadata, getJsonLdGraph } from "@/lib/seo";
 import "./globals.css";
+
+
 
 const inter = Inter({
   variable: "--font-sans",
@@ -42,6 +45,7 @@ export default function RootLayout({
         />
         <Analytics />
         <CrispChat />
+        <MicrosoftClarity /> {/* 👈 ADD HERE */}
         <ThemeProvider>{children}</ThemeProvider>
         <FacebookMessenger />
       </body>
