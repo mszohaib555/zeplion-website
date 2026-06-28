@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
-import { TrustpilotBadge } from "@/components/TrustpilotBadge";
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card/30">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <Link href="/" className="inline-block shrink-0">
               <img
@@ -95,8 +94,6 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          <TrustpilotBadge />
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">

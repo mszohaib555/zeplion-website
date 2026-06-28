@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { REVIEWS, SITE, TRUST_BADGES } from "@/lib/constants";
+import { FiverrBadge } from "@/components/FiverrBadge";
 import { cn } from "@/lib/utils";
 
 const floatingCards = [
@@ -92,18 +93,11 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="mt-10 flex items-center justify-center gap-3 lg:justify-start">
-              <div className="flex items-center gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-[#00A3FF] text-[#00A3FF]"
-                  />
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground">
+            <div className="mt-10 flex flex-col items-center gap-4 lg:items-start">
+              <p className="text-center text-sm font-bold text-muted-foreground lg:text-left">
                 {SITE.honestTagline}
               </p>
+              <FiverrBadge />
             </div>
           </motion.div>
 

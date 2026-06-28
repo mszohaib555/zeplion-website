@@ -23,7 +23,8 @@ export function TrustpilotBadge({ className = "" }: { className?: string }) {
         ))}
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
-        Reviews coming soon — verified client feedback on Trustpilot.
+        We are just getting started — our first verified client reviews are
+        coming soon. Check back shortly!
       </p>
     </div>
   );

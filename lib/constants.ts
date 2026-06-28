@@ -7,7 +7,8 @@ export const SITE = {
     "Zeplion is a full-service technology company helping businesses worldwide automate, scale and grow using AI systems and custom software solutions",
   footerDescription:
     "Your all-in-one technology partner for AI automation, SaaS and software development",
-  honestTagline: "Currently working with select clients worldwide",
+  honestTagline:
+    "Delivering AI Automation and Software Solutions to Businesses Across UK, UAE & USA",
   email: "contact@zeplion.com",
   website: "zeplion.com",
   whatsapp: "447479348006",

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, MessageCircle, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { TrustpilotBadge } from "@/components/TrustpilotBadge";
 import { SITE, WHATSAPP_URL } from "@/lib/constants";
 
 export function PageHeader({
@@ -81,6 +82,13 @@ export function ContactPageContent() {
                   Serving clients in UK, USA &amp; Middle East
                 </li>
               </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 }}
+            >
+              <TrustpilotBadge />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
